@@ -17,7 +17,6 @@ crcmod==1.7
 cryptography==2.6.1
 decorator==5.0.7
 defusedxml==0.7.1
-distro-info==0.21
 entrypoints==0.3
 Flask==1.1.2
 gitdb==4.0.7
