@@ -1,13 +1,14 @@
+numpy
+pandas
 sklearn==0.0
+Cython
 Flask==1.1.1
 gunicorn==19.9.0
 itsdangerous==1.1.0
 Jinja2==2.10.1
 MarkupSafe==1.1.1
 Werkzeug==0.15.5
-numpy
 scipy
-pandas
 scikit-learn==0.22.1
 matplotlib
 flasgger==0.9.4
