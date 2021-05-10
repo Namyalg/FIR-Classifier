@@ -8,9 +8,11 @@ import os
 import pickle
 
 from google_trans_new import google_translator
-pytesseract.pytesseract.tesseract_cmd = (
+
+pytesseract.pytesseract.tesseract_cmd = './.apt/usr/bin/tesseract'
+'''pytesseract.pytesseract.tesseract_cmd = (
     r'/usr/bin/tesseract'
-)
+)'''
 import csv
 page_count = 0
 
