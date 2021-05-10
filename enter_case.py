@@ -12,15 +12,12 @@ def classify_utterance(utt):
     return(loaded_model.predict(loaded_vectorizer.transform([utt])))
 
      
+def enter_text():
+    st.title("First Information Report Classifier")
+    case_content = st.text_input("Case Content", "")
 
-st.title("First information Report")
-
-case_content = st.text_input("Case Content", "")
-
-if st.button("Predict"):
+    if st.button("Predict"):
         result = classify_utterance(case_content)
 
-        st.success('The output is {}'.format(result))
-
-#text = "I was promised a job offer but was not given any offer and my details were stolen"
-#text1 = "I purchased a washing machine which costed 200 thousand ruppes but was given the fake product"
+        st.success('The case belongs to class {}'.format(result))
+    return 

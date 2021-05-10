@@ -1,9 +1,12 @@
 from PIL import Image 
 import pytesseract 
 import sys 
-from pdf2image import convert_from_path 
+import pdf2image
+from pdf2image import convert_from_bytes
 import streamlit as st
 import os
+import pickle
+
 from google_trans_new import google_translator
 pytesseract.pytesseract.tesseract_cmd = (
     r'/usr/bin/tesseract'
@@ -15,7 +18,7 @@ def extract_text(file_path):
     PDF_file = file_path
     
     # Store all the pages of the PDF in a variable 
-    pages = convert_from_path(PDF_file, 500) 
+    pages = convert_from_bytes(PDF_file, output_folder=".") 
 
     images = []
     image_counter = 1
@@ -52,9 +55,42 @@ def translate_row(row):
     index2 = a.rfind("11")
     return a[index+6:index2]
 
-uploaded_file = st.file_uploader("Upload Files",type='pdf')
-if uploaded_file is not None:
-    file_details = {"FileName":uploaded_file.name,"FileType":uploaded_file.type,"FileSize":uploaded_file.size}
-    kannada_text = (extract_text(uploaded_file.name))
-    english_text = translate_row(kannada_text)
-    st.write(english_text)
+def upload_file():
+    st.title("First Information Report Classifier")
+    uploaded_file = st.file_uploader("Upload Files", type='pdf')
+    if uploaded_file is not None:
+        file_details = {"FileName":uploaded_file.name,"FileType":uploaded_file.type,"FileSize":uploaded_file.size}
+        st.write("This might take a few seconds \n") 
+        kannada_text = (extract_text(uploaded_file.read()))
+        st.write("The case content in english is \n")
+        st.write(kannada_text)
+        st.write("The case content in kannada is \n")
+        english_text = translate_row(kannada_text)
+        st.write(english_text)
+        case_content = english_text
+
+        if st.button("Predict"):
+            result = classify_utterance(case_content)
+            st.success('The case belongs to class {}'.format(result))
+    return 
+
+
+def classify_utterance(utt):
+    # load the vectorizer
+    loaded_vectorizer = pickle.load(open('vectorizer1.pickle', 'rb'))
+
+    # load the model
+    loaded_model = pickle.load(open('classification1.model', 'rb'))
+
+    # make a prediction
+    return(loaded_model.predict(loaded_vectorizer.transform([utt])))
+
+     
+def enter_text():
+    st.title("First Information Report Classifier")
+    case_content = st.text_input("Case Content", "")
+
+    if st.button("Predict"):
+        result = classify_utterance(case_content)
+        st.success('The output is {}'.format(result))
+    return 

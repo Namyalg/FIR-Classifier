@@ -1,7 +1,30 @@
+import pickle
+import streamlit as st
+
+def classify_utterance(utt):
+    # load the vectorizer
+    loaded_vectorizer = pickle.load(open('vectorizer1.pickle', 'rb'))
+
+    # load the model
+    loaded_model = pickle.load(open('classification1.model', 'rb'))
+
+    # make a prediction
+    return(loaded_model.predict(loaded_vectorizer.transform([utt])))
+
+     
+
+#st.title("First information Report")
+
+#case_content = st.text_input("Case Content", "")
+
+if st.button("Predict"):
+        result = classify_utterance(case_content)
+
+        st.success('The output is {}'.format(result))
+
 from PIL import Image 
 import pytesseract 
 import sys 
-import pdf2image
 from pdf2image import convert_from_path 
 import streamlit as st
 import os
@@ -16,7 +39,7 @@ def extract_text(file_path):
     PDF_file = file_path
     
     # Store all the pages of the PDF in a variable 
-    pages = convert_from_path(PDF_file, 5) 
+    pages = convert_from_path(PDF_file, 500) 
 
     images = []
     image_counter = 1
@@ -56,8 +79,6 @@ def translate_row(row):
 uploaded_file = st.file_uploader("Upload Files",type='pdf')
 if uploaded_file is not None:
     file_details = {"FileName":uploaded_file.name,"FileType":uploaded_file.type,"FileSize":uploaded_file.size}
-    
-    st.write(file_details)
     kannada_text = (extract_text(uploaded_file.name))
-    
-    #english_text = translate_row(kannada_text)
+    english_text = translate_row(kannada_text)
+    st.write(english_text)
