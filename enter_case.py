@@ -3,10 +3,10 @@ import streamlit as st
 
 def classify_utterance(utt):
     # load the vectorizer
-    loaded_vectorizer = pickle.load(open('vectorizer1.pickle', 'rb'))
+    loaded_vectorizer = pickle.load(open('vectorizer.pickle', 'rb'))
 
     # load the model
-    loaded_model = pickle.load(open('classification1.model', 'rb'))
+    loaded_model = pickle.load(open('classification.model', 'rb'))
 
     # make a prediction
     return(loaded_model.predict(loaded_vectorizer.transform([utt])))

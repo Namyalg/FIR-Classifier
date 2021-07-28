@@ -3,10 +3,10 @@ import streamlit as st
 
 def classify_utterance(utt):
     # load the vectorizer
-    loaded_vectorizer = pickle.load(open('vectorizer1.pickle', 'rb'))
+    loaded_vectorizer = pickle.load(open('vectorizer.pickle', 'rb'))
 
     # load the model
-    loaded_model = pickle.load(open('classification1.model', 'rb'))
+    loaded_model = pickle.load(open('classification.model', 'rb'))
 
     # make a prediction
     return(loaded_model.predict(loaded_vectorizer.transform([utt])))
@@ -78,7 +78,7 @@ def translate_row(row):
 
 uploaded_file = st.file_uploader("Upload Files",type='pdf')
 if uploaded_file is not None:
-    file_details = {"FileName":uploaded_file.name,"FileType":uploaded_file.type,"FileSize":uploaded_file.size}
+    file_details = {"FileName" : uploaded_file.name, "FileType" : uploaded_file.type, "FileSize" : uploaded_file.size}
     kannada_text = (extract_text(uploaded_file.name))
     english_text = translate_row(kannada_text)
     st.write(english_text)
