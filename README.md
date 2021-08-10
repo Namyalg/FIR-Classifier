@@ -1,6 +1,6 @@
 # FIR Classifier
 
-[Sample FIR](https://images.app.goo.gl/DtHhrTv2VSLFWetr6)
+[Sample FIR](https://images.app.goo.gl/DtHhrTv2VSLFWetr6?raw=True)
 - This is the prototype developed for the classification of FIRs written in the language Kannada 
 
 
@@ -27,6 +27,7 @@ Steps to follow to locally setup the project
   - Preferably create a virtual environment
   - Clone the repository
   - Install all the dependencies by ```pip install -r requirements.txt```
+  - To install ```POPPLER``` one of the dependencies, this article can be followed for those on Windows : https://newbedev.com/how-to-install-poppler-on-windows, for those on Ubuntu or Mac OS this canbe followed : https://pdf2image.readthedocs.io/en/latest/installation.html
   - Run ```streamlit run app.py``` from the root directory and open ```PORT 8501```
 
 ### Deployment
