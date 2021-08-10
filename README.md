@@ -30,4 +30,5 @@ Steps to follow to locally setup the project
 ### Deployment
  
  In order to deploy this application, I have compiled all the steps in a blog 
+ 
  https://namyalg.medium.com/deploy-a-streamlit-app-on-heroku-with-ocr-c0ec2a3dab2e
