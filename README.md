@@ -18,5 +18,4 @@ The prototype is deployed at : https://predict-fir.herokuapp.com
 
 ![Sample Case Text](assets/sample_case.PNG?raw=true "Sample case text")
 
-### Local Setup
 
