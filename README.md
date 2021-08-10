@@ -12,11 +12,10 @@ The prototype is deployed at : https://predict-fir.herokuapp.com
 
 - Page to upload the PDF
 
-![Upload Case File](assets/pdf.PNG?raw=true "Case file")
+![Upload Case File](assets/upload.PNG?raw=true "Case file")
 
 - Sample case statement : XYZ received a call that he had got a job offer and was asked to send his personal documents and money after which he was not given a job.The classification is aptly obtained as the type JOB SCAM
 
 ![Sample Case Text](assets/sample_case.PNG?raw=true "Sample case text")
 
-### Local Setup
 
