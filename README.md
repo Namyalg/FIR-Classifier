@@ -1,4 +1,6 @@
 # FIR Classifier
+
+[Sample FIR](https://images.app.goo.gl/DtHhrTv2VSLFWetr6)
 - This is the prototype developed for the classification of FIRs written in the language Kannada 
 
 
