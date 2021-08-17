@@ -2,12 +2,10 @@
 
 ![Sample FIR](assets/fir.jpg?raw=true "FIR")
 
-<!--This is the prototype developed for the classification of FIRs written in the language Kannada -->
+This is the prototype developed for the classification of FIRs written in the language Kannada
 
 
 ### Working model
-
-The prototype is deployed at : https://predict-fir.herokuapp.com
 
 - Page to enter the case of the text
 
